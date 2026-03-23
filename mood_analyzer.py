@@ -9,6 +9,7 @@ This class starts with very simple logic:
   - Convert that score into a mood label
 """
 
+import re
 from typing import List, Dict, Tuple, Optional
 
 from dataset import POSITIVE_WORDS, NEGATIVE_WORDS
@@ -53,7 +54,11 @@ class MoodAnalyzer:
           - Normalize repeated characters ("soooo" -> "soo")
         """
         cleaned = text.strip().lower()
-        tokens = cleaned.split()
+        cleaned = re.sub(r"[.,!?;\"()\[\]{}]", " ", cleaned)
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
+        tokens = cleaned.split() if cleaned else []
+
+        print(f"[preprocess] {text!r} -> {tokens}")
 
         return tokens
 
@@ -83,7 +88,29 @@ class MoodAnalyzer:
         #
         # Hint: if you implement negation, you may want to look at pairs of tokens,
         # like ("not", "happy") or ("never", "fun").
-        pass
+        tokens = self.preprocess(text)
+        score = 0
+
+        negation_words = {"not", "never", "no"}
+        positive_emoji = {"🙂", "😍"}
+        negative_emoji = {"🙃", "🥲"}
+
+        for i, token in enumerate(tokens):
+            previous_token = tokens[i - 1] if i > 0 else ""
+            is_negated = previous_token in negation_words or previous_token.endswith(
+                "n't"
+            )
+
+            if token in self.positive_words:
+                score += -1 if is_negated else 1
+            elif token in self.negative_words:
+                score += 1 if is_negated else -1
+            elif token in positive_emoji:
+                score += 1
+            elif token in negative_emoji:
+                score -= 1
+
+        return score
 
     # ---------------------------------------------------------------------
     # Label prediction
@@ -110,7 +137,19 @@ class MoodAnalyzer:
         #   2. Return "positive" if the score is above 0.
         #   3. Return "negative" if the score is below 0.
         #   4. Return "neutral" otherwise.
-        pass
+        tokens = self.preprocess(text)
+        score = self.score_text(text)
+
+        has_positive = any(token in self.positive_words for token in tokens)
+        has_negative = any(token in self.negative_words for token in tokens)
+
+        if has_positive and has_negative:
+            return "mixed"
+        if score > 0:
+            return "positive"
+        if score < 0:
+            return "negative"
+        return "neutral"
 
     # ---------------------------------------------------------------------
     # Explanations (optional but recommended)

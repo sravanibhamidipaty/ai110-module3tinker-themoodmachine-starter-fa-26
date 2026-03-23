@@ -50,6 +50,20 @@ SAMPLE_POSTS = [
     "This is fine",
     "So excited for the weekend",
     "I am not happy about this",
+    "Lowkey proud of how today went even tho I'm exhausted 🥲",
+    "LOL the meeting could've been an email 😂",
+    "Not mad, just kinda disappointed tbh",
+    "Got the job!! Now I'm terrified to start 😅",
+    "It's raining again... cozy vibes, but my plans are dead",
+    "Yeah I'm fine, just staring at the ceiling at 2am",
+    "No cap, that playlist saved my whole commute",
+    "We finally finished the project. Weirdly empty now",
+    "Sure, another group project, exactly what I needed 🙃",
+    "IDK, today felt very... average",
+    "Sick playlist, had it on repeat all day 🔥",
+    "Love that for me, spilled coffee on my laptop",
+    "I'm fine 🙂 just kidding, I'm stressed",
+    "Kinda tired, kinda excited for tomorrow",
 ]
 
 # Human labels for each post above.
@@ -65,6 +79,20 @@ TRUE_LABELS = [
     "neutral",   # "This is fine"
     "positive",  # "So excited for the weekend"
     "negative",  # "I am not happy about this"
+    "mixed",  # "Lowkey proud of how today went even tho I'm exhausted 🥲"
+    "negative",  # "LOL the meeting could've been an email 😂"
+    "negative", # Not mad, just kinda disappointed tbh
+    "mixed", # "Got the job!! Now I'm terrified to start 😅"
+    "mixed", # "It's raining again... cozy vibes, but my plans are dead"
+    "negative", # "Yeah I'm fine, just staring at the ceiling at 2am"
+    "positive", # "No cap, that playlist saved my whole commute"
+    "mixed", # "We finally finished the project. Weirdly empty now"
+    "negative", # "Sure, another group project, exactly what I needed 🙃"
+    "neutral", # "IDK, today felt very... average"
+    "positive",  # "Sick playlist, had it on repeat all day 🔥"
+    "negative",  # "Love that for me, spilled coffee on my laptop"
+    "negative",  # "I'm fine 🙂 just kidding, I'm stressed"
+    "mixed",  # "Kinda tired, kinda excited for tomorrow"
 ]
 
 # TODO: Add 5-10 more posts and labels.
