@@ -23,6 +23,10 @@ POSITIVE_WORDS = [
     "chill",
     "relaxed",
     "amazing",
+    # Part 3 fix: positive slang the model was missing (scored these as neutral)
+    "sick",
+    "fire",
+    "proud",
 ]
 
 NEGATIVE_WORDS = [
@@ -64,6 +68,15 @@ SAMPLE_POSTS = [
     "Love that for me, spilled coffee on my laptop",
     "I'm fine 🙂 just kidding, I'm stressed",
     "Kinda tired, kinda excited for tomorrow",
+    # --- New posts (Part 1) ---
+    "aced my midterm let's gooo 🔥🔥",
+    "cant sleep, brain wont shut up 💀",
+    "wow another Monday, my absolute favorite 🙃",
+    "the concert was unreal, still buzzing 😭❤️",
+    "meh, just another day at the office",
+    "highkey nervous about the interview but kinda ready?",
+    "my plant died and honestly it hit different 🥀",
+    "no thoughts, just vibes rn 😌",
 ]
 
 # Human labels for each post above.
@@ -93,6 +106,15 @@ TRUE_LABELS = [
     "negative",  # "Love that for me, spilled coffee on my laptop"
     "negative",  # "I'm fine 🙂 just kidding, I'm stressed"
     "mixed",  # "Kinda tired, kinda excited for tomorrow"
+    # --- New labels (Part 1), aligned 1:1 with the new posts above ---
+    "positive",  # "aced my midterm let's gooo 🔥🔥"
+    "negative",  # "cant sleep, brain wont shut up 💀"
+    "negative",  # "wow another Monday, my absolute favorite 🙃" (sarcasm)
+    "positive",  # "the concert was unreal, still buzzing 😭❤️"
+    "neutral",   # "meh, just another day at the office"
+    "mixed",     # "highkey nervous about the interview but kinda ready?"
+    "negative",  # "my plant died and honestly it hit different 🥀"
+    "neutral",   # "no thoughts, just vibes rn 😌"
 ]
 
 # TODO: Add 5-10 more posts and labels.
